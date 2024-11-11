@@ -3,7 +3,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Shx hub " .. "V1.0",
+    Title = "Shx hub V1.0",
     SubTitle = "Private script",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
@@ -14,10 +14,10 @@ local Window = Fluent:CreateWindow({
 
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "home" }),
-	Scripts = Window:AddTab({ Title = "Scipts", Icon = "book" }),
-	Player = Window:AddTab({ Title = "Player", Icon = "person-standing" }),
+    Scripts = Window:AddTab({ Title = "Scipts", Icon = "book" }),
+    Player = Window:AddTab({ Title = "Player", Icon = "person-standing" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
-	Debug = Window:AddTab({ Title = "Debug", Icon = "flag" })
+    Debug = Window:AddTab({ Title = "Debug", Icon = "flag" })
 
 }
 
@@ -26,7 +26,7 @@ local Options = Fluent.Options
 do
     Fluent:Notify({
         Title = "Shx on top🦈",
-		Content = "Welcome to Shx hub " .. game.Players.LocalPlayer.Name,
+        Content = "Welcome to Shx hub " .. game.Players.LocalPlayer.Name,
         Duration = 5 -- Set to nil to make the notification not disappear
     })
 
@@ -34,26 +34,26 @@ do
         Title = "Control player's walkspeed jumpPower and abilities🌠",
         Content = "There are sliders that control player's walkspeed and jumpPower💡\nButton and toggle switch control player's and abilities🌌"
     })
-	local Slider = Tabs.Player:AddSlider("Slider", {
+    local Slider = Tabs.Player:AddSlider("Slider", {
         Title = "WalkSpeed",
         Description = "Change player's walkspeed",
         Default = 16,
         Min = 0,
         Max = 1000,
         Rounding = 1,
-		Callback = function(Value)
-			
-			-- Get the local player
-			local player = game.Players.LocalPlayer
-			
-			-- Ensure the player has a character
-			if player and player.Character and player.Character:FindFirstChild("Humanoid") then
-				-- Set the Humanoid's WalkSpeed to the slider value
-				local humanoid = player.Character:FindFirstChild("Humanoid")
-				humanoid.WalkSpeed = Value
-			end
-		end
-		
+        Callback = function(Value)
+            
+            -- Get the local player
+            local player = game.Players.LocalPlayer
+            
+            -- Ensure the player has a character
+            if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+                -- Set the Humanoid's WalkSpeed to the slider value
+                local humanoid = player.Character:FindFirstChild("Humanoid")
+                humanoid.WalkSpeed = Value
+            end
+        end
+        
     })
 
     Slider:OnChanged(function(Value)
@@ -62,26 +62,26 @@ do
 
     Slider:SetValue(16)
 
-	local Slider2 = Tabs.Player:AddSlider("Slider2", {
+    local Slider2 = Tabs.Player:AddSlider("Slider2", {
         Title = "jumpPower",
         Description = "Change player's jumpPower",
         Default = 50,
         Min = 0,
         Max = 500,
         Rounding = 1,
-		Callback = function(Value)
-			
-			-- Get the local player
-			local player = game.Players.LocalPlayer
-			
-			-- Ensure the player has a character
-			if player and player.Character and player.Character:FindFirstChild("Humanoid") then
-				-- Set the Humanoid's WalkSpeed to the slider value
-				local humanoid = player.Character:FindFirstChild("Humanoid")
-				humanoid.JumpPower = Value
-			end
-		end
-		
+        Callback = function(Value)
+            
+            -- Get the local player
+            local player = game.Players.LocalPlayer
+            
+            -- Ensure the player has a character
+            if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+                -- Set the Humanoid's WalkSpeed to the slider value
+                local humanoid = player.Character:FindFirstChild("Humanoid")
+                humanoid.JumpPower = Value
+            end
+        end
+        
     })
 
     Slider2:OnChanged(function(Value)
@@ -109,15 +109,15 @@ do
         Title = "Infinite Yield",
         Description = "Admin commands",
         Callback = function()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
         end
     })
 
-	Tabs.Scripts:AddButton({
+    Tabs.Scripts:AddButton({
         Title = "Tp tool",
         Description = "Use tool to tp",
         Callback = function()
-			mouse = game.Players.LocalPlayer:GetMouse()
+            mouse = game.Players.LocalPlayer:GetMouse()
 tool = Instance.new("Tool")
 tool.RequiresHandle = false
 tool.Name = "Click Teleport"
@@ -134,42 +134,42 @@ tool.Parent = game.Players.LocalPlayer.Backpack
         Title = "Replication Gui",
         Description = "F3X Replication Gui",
         Callback = function()
-			loadstring(game:HttpGet(('https://pastebin.com/raw/zip7keHx'),true))()
+            loadstring(game:HttpGet(('https://pastebin.com/raw/zip7keHx'),true))()
         end
     })
     Tabs.Scripts:AddButton({
         Title = "Owl Hub",
         Description = "Owl Hub is a free Roblox script hub developed by Google Chrome and CriShoux.It currently has 30+ games. It is made to be executed on Roblox exploits.",
         Callback = function()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
         end
     })
     Tabs.Scripts:AddButton({
         Title = "Ez Hub",
         Description = "Multi-game script hub with a beautifully made UI.",
         Callback = function()
-			loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Ez%20Hub.txt"))()
+            loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Ez%20Hub.txt"))()
         end
     })
     Tabs.Scripts:AddButton({
         Title = "Highlight Player",
         Description = "Places a selection box around the selected player.",
         Callback = function()
-			loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Highlight%20Player.txt"))()
+            loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Highlight%20Player.txt"))()
         end
     })
     Tabs.Scripts:AddButton({
         Title = "High Hips",
         Description = "Walk like normal, but a little taller.",
         Callback = function()
-			loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/High%20Hips.txt"))()
+            loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/High%20Hips.txt"))()
         end
     })
     Tabs.Scripts:AddButton({
         Title = "Focus Anti-AFK",
         Description = "Even when you switch to another window, you will appear to be active.",
         Callback = function()
-			loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/anti-afk%20via%20autofocus.txt"))()
+            loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/anti-afk%20via%20autofocus.txt"))()
         end
     })
     Tabs.Debug:AddButton({
@@ -180,7 +180,7 @@ game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 
         end
     })
-	Tabs.Debug:AddButton({
+    Tabs.Debug:AddButton({
         Title = "Dex Explorer",
         Description = "Open Dex Explorer", 
         Callback = function()
@@ -215,68 +215,68 @@ game:GetService("StarterGui"):SetCore("DevConsoleVisible", true)
 
 
 
-	local UserInputService = game:GetService("UserInputService")
+    local UserInputService = game:GetService("UserInputService")
 
-	-- Variable to track if infinite jump is enabled
-	local isInfJumpEnabled = false
-	
-	-- Add a toggle to enable or disable infinite jump
-	local Toggle = Tabs.Player:AddToggle("MyToggle", {Title = "Inf Jump (Hold to fly)",Discription = "Enable infinite jump", Default = false })
-	
-	Toggle:OnChanged(function()
-		isInfJumpEnabled = Options.MyToggle.Value
-		print("Toggle changed:", isInfJumpEnabled)
-	end)
-	Tabs.Player:AddButton({
+    -- Variable to track if infinite jump is enabled
+    local isInfJumpEnabled = false
+    
+    -- Add a toggle to enable or disable infinite jump
+    local Toggle = Tabs.Player:AddToggle("MyToggle", {Title = "Inf Jump (Hold to fly)",Discription = "Enable infinite jump", Default = false })
+    
+    Toggle:OnChanged(function()
+        isInfJumpEnabled = Options.MyToggle.Value
+        print("Toggle changed:", isInfJumpEnabled)
+    end)
+    Tabs.Player:AddButton({
         Title = "Remove display name",
         Description = "Remove evryone's display name",
         Callback = function()
 
 
-			local Players = game:FindService("Players")
+            local Players = game:FindService("Players")
 
-			require(game:GetService("Chat"):WaitForChild("ClientChatModules").ChatSettings).PlayerDisplayNamesEnabled = false
-			
-			local function rename(character,name)
-				repeat task.wait() until character:FindFirstChildWhichIsA("Humanoid")
-				character:FindFirstChildWhichIsA("Humanoid").DisplayName = name
-			end
-			
-			for i,v in next, Players:GetPlayers() do
-				if v.Character then
-					v.DisplayName = v.Name
-					rename(v.Character,v.Name)
-				end
-				v.CharacterAdded:Connect(function(char)
-					rename(char,v.Name)
-				end)
-			end
-			
-			Players.PlayerAdded:Connect(function(plr)
-				plr.DisplayName = plr.Name
-				plr.CharacterAdded:Connect(function(char)
-					rename(char,plr.Name)
-				end)
-			end)
-			
-			
+            require(game:GetService("Chat"):WaitForChild("ClientChatModules").ChatSettings).PlayerDisplayNamesEnabled = false
+            
+            local function rename(character,name)
+                repeat task.wait() until character:FindFirstChildWhichIsA("Humanoid")
+                character:FindFirstChildWhichIsA("Humanoid").DisplayName = name
+            end
+            
+            for i,v in next, Players:GetPlayers() do
+                if v.Character then
+                    v.DisplayName = v.Name
+                    rename(v.Character,v.Name)
+                end
+                v.CharacterAdded:Connect(function(char)
+                    rename(char,v.Name)
+                end)
+            end
+            
+            Players.PlayerAdded:Connect(function(plr)
+                plr.DisplayName = plr.Name
+                plr.CharacterAdded:Connect(function(char)
+                    rename(char,plr.Name)
+                end)
+            end)
+            
+            
         end
     })
 
 
-	-- Function to handle infinite jump
-	UserInputService.JumpRequest:Connect(function()
-		if isInfJumpEnabled then
-			local player = game.Players.LocalPlayer
-			if player and player.Character and player.Character:FindFirstChild("Humanoid") then
-				-- Allow the player to jump again
-				player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-			end
-		end
-	end)
-	
-	-- Set the initial value of the toggle
-	Options.MyToggle:SetValue(false)
+    -- Function to handle infinite jump
+    UserInputService.JumpRequest:Connect(function()
+        if isInfJumpEnabled then
+            local player = game.Players.LocalPlayer
+            if player and player.Character and player.Character:FindFirstChild("Humanoid") then
+                -- Allow the player to jump again
+                player.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+            end
+        end
+    end)
+    
+    -- Set the initial value of the toggle
+    Options.MyToggle:SetValue(false)
 
 
 
@@ -352,3 +352,4 @@ Window:SelectTab(2)
 -- which has been marked to be one that auto loads!
 SaveManager:LoadAutoloadConfig()
 
+s
