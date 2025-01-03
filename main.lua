@@ -1,149 +1,95 @@
-local allowedValues = { "A5ZSwC9dIW", "xSXwYA67Ql", "DHu1sNhIdy", "Bn8U8plGkb", "r2B5Dxm1ou"}
-local Version = "1.0.1"
-
--- Initialize a flag to check if the script has already been run
-local scriptRunFlag = false
-
---loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+Fluent:Notify({
+    Title = "Shx HUB🦈 [Loaded]",
+    Content = "[✅Get key or enter your key]",
+    Duration = 8 -- The script runs in a different game
+})
+
+
+
+local KeyGuardLibrary = loadstring(game:HttpGet("https://cdn.keyguardian.org/library/v1.0.0.lua"))()
+local trueData = "73432b04b36540cda570b6217182db0f"
+local falseData = "cca2c08106ba4f938203e4b6f9d0208f"
+
+KeyGuardLibrary.Set({
+  publicToken = "ef7caa315cfb447f89454918d1f8f9df",
+  privateToken = "35c5dcfbacab44ccb349ffa2bd0ab821",
+  trueData = trueData,
+  falseData = falseData,
+})
+
+
+local key = ""
 
 local Window = Fluent:CreateWindow({
-    Title = "Version " .. Version ,"You're updated✅",
-    SubTitle = "by Sharky_DEV",
+    Title = "Key System",
+    SubTitle = "Shxhub",
     TabWidth = 160,
-    Size = UDim2.fromOffset(580, 460),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Size = UDim2.fromOffset(580, 340),
+    Acrylic = false,
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.LeftControl -- Used when there's no MinimizeKeybind
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
 local Tabs = {
-    Main = Window:AddTab({ Title = "Keys", Icon = "key" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+    KeySys = Window:AddTab({ Title = "Key System", Icon = "key" }),
 }
 
-local Input = Tabs.Main:AddInput("Input", {
-    Title = "Keys",
-    Placeholder = "Key here",
-    Numeric = false, -- Only allows numbers
-    Finished = false, -- Only calls callback when you press enter
+local Entkey = Tabs.KeySys:AddInput("Input", {
+    Title = "Enter Key",
+    Description = "Enter Key Here",
+    Default = "",
+    Placeholder = "Enter key…",
+    Numeric = false,
+    Finished = false,
     Callback = function(Value)
-        print("Input changed:", Value)
+        key = Value
     end
 })
 
--- Track if error has been notified
-local errorNotified = false
-
-Input:OnChanged(function()
-    print("Input updated:", Input.Value)
-
-
-    if table.find(allowedValues, Input.Value) then
-        if scriptRunFlag then
-            Fluent:Notify({
-                Title = "Sharky HUB🦈",
-                Content = "Script runned.",
-                Duration = 8
-            })
-            return -- Exit early if the script has already been run
-        end
-
-        local fischPlaceId = 16732694052
-        local bloxfruitPlaceIds = {2753915549, 4442272183, 7449423635}
-
-        if game.PlaceId == fischPlaceId then
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))() -- The script runs in the game called "Fisch"
-            Fluent:Notify({
-                Title = "Sharky HUB🦈 [Fisch🐟🎣]",
-                Content = "loading script for " .. Input.Value,
-                Duration = 8
-            })
-            errorNotified = false -- Reset error flag
-            scriptRunFlag = true -- Set the flag to indicate the script has run
+local Checkkey = Tabs.KeySys:AddButton({
+    Title = "Check Key",
+    Description = "Enter Key before pressing this button",
+    Callback = function()
+        local response = KeyGuardLibrary.validateDefaultKey(key)
+        if response == trueData then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/GundamNarawit/ShxHub/refs/heads/main/Loader.lua"))()
+           -- Your code here
         else
-            if not errorNotified then
-                Fluent:Notify({
-                    Title = "Sharky HUB🦈 [🛑Error game not supported]",
-                    Content = "[🛑Error game not supported]",
-                    Duration = 8 -- The script runs in a different game
-                })
-                errorNotified = true -- Set error flag
-            end
-        end
-
-        -- Function to check if the current Place ID is in the list
-        local function IsbloxfruitPlaceIds()
-            for _, id in ipairs(bloxfruitPlaceIds) do
-                if game.PlaceId == id then
-                    return true
-                end
-            end
-            return false
-        end
-
-        -- Check the current Place ID and print a message
-        if IsbloxfruitPlaceIds() then
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/realredz/BloxFruits/refs/heads/main/Source.lua"))()
             Fluent:Notify({
-                Title = "Sharky HUB🦈 [BloxFruits🍇]",
-                Content = "loading script for " .. Input.Value,
-                Duration = 8
+                Title = "Shx HUB🦈 [invalid key🛑]",
+                Content = "[🛑Error key not found]",
+                Duration = 8 -- The script runs in a different game
             })
-            errorNotified = false -- Reset error flag
-            scriptRunFlag = true -- Set the flag to indicate the script has run
+        end
+    end
+})
+local fischPlaceId = 16732694052
+local bloxfruitPlaceIds = {2753915549, 4442272183, 7449423635}
+local Checkkey = Tabs.KeySys:AddButton({
+    Title = "Check Key (Premium)",
+    Description = "Enter Key before pressing this button (Premium)",
+    Callback = function()
+        local response = KeyGuardLibrary.validatePremiumKey(key)
+        if response == trueData then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/GundamNarawit/ShxHub/refs/heads/main/Loader.lua"))()
+           -- Your code here
         else
-            if not errorNotified then
-                Fluent:Notify({
-                    Title = "Sharky HUB🦈 [🛑Error game not supported]",
-                    Content = "[🛑Error game not supported]",
-                    Duration = 8 -- The script runs in a different game
-                })
-                errorNotified = true -- Set error flag
-            end
+            Fluent:Notify({
+                Title = "Shx HUB🦈 [invalid key🛑]",
+                Content = "[🛑Error key not found]",
+                Duration = 8 -- The script runs in a different game
+            })
         end
     end
-end)
-
-local CurrentId = game.PlaceId -- Current game ID
-local ServerStartTime = tick() -- The time the server started
-local PlayerCount = #game.Players:GetPlayers() -- Number of players in the server
-local PlayerName = game.Players.LocalPlayer.Name -- The player's name
-
--- Function to calculate server uptime
-local function getServerUptime()
-    local uptime = tick() - ServerStartTime
-    local minutes = math.floor(uptime / 60)
-    local seconds = math.floor(uptime % 60)
-    return string.format("%02d:%02d", minutes, seconds)
-end
-
--- Function to check if the game is supported
-local function isGameSupported()
-    local supportedPlaceIds = {16732694052, 2753915549, 4442272183, 7449423635} -- Add supported Place IDs here
-    for _, id in ipairs(supportedPlaceIds) do
-        if game.PlaceId == id then
-            return true
-        end
+})
+local Getkey = Tabs.KeySys:AddButton({
+    Title = "Get Key",
+    Description = "Get Key here",
+    Callback = function()
+       setclipboard(KeyGuardLibrary.getLink())
     end
-    return false
-end
+})
 
--- Adding the paragraph with the game info
-Tabs.Main:AddParagraph({
-    Title = "Game Info",
-    Content = "Current game ID: " .. CurrentId ..
-             "\nServer uptime: " .. getServerUptime() ..
-             "\nPlayers in server: " .. PlayerCount ..
-             "\nPlayer Name: " .. PlayerName ..
-             "\nStatus: " .. (isGameSupported() and "SUPPORTED✅" or "NOT SUPPORTED🛑")
-})
-Fluent:Notify({
-    Title = "Sharky HUB🦈",
-    Content = "✅ The script has been loaded.",
-    Duration = 8
-})
-Window:SelectTab(1)
-Window:SelectTab(1)
-Window:SelectTab(1)
+
 Window:SelectTab(1)
